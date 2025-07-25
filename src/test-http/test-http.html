@@ -1,4 +1,8 @@
     <button (click)="makeRequests()">Faire plusieurs requêtes</button>
+    <button (click)="makeLocalRequest()">Faire une requête locale</button>
+    @if (loaderService.loading$ | async) {
+      <lib-squid-game-loader-local></lib-squid-game-loader-local>
+    }
     <div *ngIf="responses.length">
       <p *ngFor="let r of responses">{{ r | json }}</p>
     </div>

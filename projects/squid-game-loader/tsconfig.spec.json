@@ -10,5 +10,5 @@
   },
   "include": [
     "src/**/*.ts"
-  ]
+, "src/lib/local/squid-game-loader-local.ts", "src/lib/local/loader-component.service.ts"  ]
 }

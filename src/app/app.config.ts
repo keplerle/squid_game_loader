@@ -4,7 +4,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { HTTP_INTERCEPTORS, HttpInterceptorFn, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
-import { LoaderService } from '../../projects/squid-game-loader/src/lib/loader.service';
+import { LoaderService } from '../../projects/squid-game-loader/src/lib/global/loader.service';
 import { finalize } from 'rxjs';
 
 export const loaderInterceptorFn: HttpInterceptorFn = (req, next) => {

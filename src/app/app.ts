@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { SquidGameLoader } from '../../projects/squid-game-loader/src/lib/squid-game-loader';
 import { TestHttpComponent } from '../test-http/test-http';
+import { SquidGameLoader } from '../../projects/squid-game-loader/src/lib/global/squid-game-loader';
 
 @Component({
   selector: 'app-root',

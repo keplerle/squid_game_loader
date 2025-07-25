@@ -10,7 +10,7 @@
   },
   "include": [
     "src/**/*.ts"
-  ],
+, "projects/squid-game-loader/src/lib/local/squid-game-loader-local.ts", "projects/squid-game-loader/src/lib/local/loader-component.service.ts"  ],
   "exclude": [
     "src/**/*.spec.ts"
   ]
