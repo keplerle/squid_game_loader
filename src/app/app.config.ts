@@ -3,12 +3,13 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpInterceptorFn, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
-import { LoaderService } from '../../projects/squid-game-loader/src/lib/global/loader.service';
+import { HttpInterceptorFn, provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { finalize } from 'rxjs';
+import { LoaderBaseService } from '../../projects/squid-game-loader/src/lib/base/loader-base.service';
+import { GLOBAL_LOADER } from '../../projects/squid-game-loader/src/lib/base/loader.token';
 
 export const loaderInterceptorFn: HttpInterceptorFn = (req, next) => {
-  const loaderService = inject(LoaderService);
+  const loaderService = inject(GLOBAL_LOADER);
   loaderService.show();
 
   return next(req).pipe(
@@ -24,6 +25,8 @@ export const appConfig: ApplicationConfig = {
     ),
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes), provideClientHydration(withEventReplay())
+    provideRouter(routes), provideClientHydration(withEventReplay()),
+        { provide: GLOBAL_LOADER, useClass: LoaderBaseService }
+
   ]
 };

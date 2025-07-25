@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LoaderService } from './loader.service';
+import { GLOBAL_LOADER } from '../base/loader.token';
+import { LoaderBaseService } from '../base/loader-base.service';
 
 @Component({
   selector: 'lib-squid-game-loader',
@@ -9,5 +10,5 @@ import { LoaderService } from './loader.service';
   styleUrls: ['./squid-game-loader.scss']
 })
 export class SquidGameLoader {
-  constructor(public loaderService: LoaderService) { }
+  constructor(@Inject(GLOBAL_LOADER) public loaderService: LoaderBaseService) { }
 }

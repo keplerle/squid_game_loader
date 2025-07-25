@@ -1,22 +1,28 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { forkJoin } from 'rxjs';
 import { CommonModule } from '@angular/common';
-import { LoaderComponentService } from '../../projects/squid-game-loader/src/lib/local/loader-component.service';
 import { SquidGameLoaderLocal } from '../../projects/squid-game-loader/src/lib/local/squid-game-loader-local';
+import { LOCAL_LOADER } from '../../projects/squid-game-loader/src/lib/base/loader.token';
+import { LoaderBaseService } from '../../projects/squid-game-loader/src/lib/base/loader-base.service';
 
 @Component({
   selector: 'app-test-http',
   standalone: true,
   imports: [CommonModule, SquidGameLoaderLocal],
-  providers: [LoaderComponentService], // Pas de service local ici
+  providers: [    
+    { provide: LOCAL_LOADER, useClass: LoaderBaseService }
+  ],
   templateUrl: `test-http.html`,
   styleUrls: ['./test-http.scss']
 })
 export class TestHttpComponent {
   responses: any[] = [];
 
-  constructor(private http: HttpClient, public loaderService: LoaderComponentService) {}
+  constructor(
+    private http: HttpClient,     
+    @Inject(LOCAL_LOADER) public loaderService: LoaderBaseService
+) {}
 
   makeRequests() {
     this.responses = []; // reset avant
