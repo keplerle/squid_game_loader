@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SquidGameLoader } from './squid-game-loader';
+import { TestHttp } from './test-http';
 
-describe('SquidGameLoader', () => {
-  let component: SquidGameLoader;
-  let fixture: ComponentFixture<SquidGameLoader>;
+describe('TestHttp', () => {
+  let component: TestHttp;
+  let fixture: ComponentFixture<TestHttp>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [SquidGameLoader]
+      imports: [TestHttp]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(SquidGameLoader);
+    fixture = TestBed.createComponent(TestHttp);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

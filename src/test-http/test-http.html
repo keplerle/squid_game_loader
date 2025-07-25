@@ -1,0 +1,4 @@
+    <button (click)="makeRequests()">Faire plusieurs requêtes</button>
+    <div *ngIf="responses.length">
+      <p *ngFor="let r of responses">{{ r | json }}</p>
+    </div>
